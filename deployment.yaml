@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-app
+  template:
+    metadata:
+      labels:
+        app: notification-app
+    spec:
+      serviceAccountName: my-service-account
+      containers:
+      - name: notification-app
+        image: youtubedilruba/notification:latest
+        ports:
+        - containerPort: 8080
